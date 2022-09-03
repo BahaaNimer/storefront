@@ -6,21 +6,22 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import { addToCart } from '../../store/Cart';
 import { connect } from 'react-redux';
+import './products.scss'
 
 function Products(props) {
   const style = { width: '200px', height: '200px' }
   return (
     <>
-      <div className="f">
+      <div className="cart-container">
         <section className="section-cart">
 
-          <Button color="inherit"> 🛒Cart({props.cart.totalCartItems})</Button>
+          <Button data-testid='cart' color="inherit"> 🛒Cart({props.cart.totalCartItems})</Button>
 
           {
             props.cart.cartItems.map(cartItem => {
               return (
-                <p >
-                  {cartItem.name}: {cartItem.inCart} pc(s) /
+                <p className='items'>
+                  {cartItem.name}: {cartItem.inCart} pc(s)
                 </p>
               );
             })
@@ -36,12 +37,12 @@ function Products(props) {
 
           <div className="ddd">
 
-            <div className="dd">
+            <div className="product-list" style={{ backgroundColor: '#968e8e' }}>
               {
                 props.products.map((product) => (
 
                   product.category === props.categories.activeCategory ?
-                    <Card key={product.name} className="root" >
+                    <Card key={product.name} className="root" style={{ backgroundColor: '#968e8e' }}>
                       <CardHeader
                         avatar={
                           <Avatar aria-label="recipe" >
@@ -58,13 +59,14 @@ function Products(props) {
                         subheader={'In Stock  ' + product.inStock + '  Pcs'}
                       />
                       <Button
+                        data-testid='button'
                         variant="contained"
-                        color="secondary"
+                        color="primary"
                         style={{ width: 100 + '%' }}
                         onClick={() => {
                           props.addToCart(product);
-                        }
-                        }>
+                        }}
+                      >
                         ADD TO CART
                       </Button>
 
@@ -73,8 +75,6 @@ function Products(props) {
                     null
                 ))
               }
-
-
             </div>
           </div>
         </section>

@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar style={{ backgroundColor: '#4d4d4d' }}>
           <Button color="inherit">&copy;Bahaa Nimer 2022</Button>
         </Toolbar>
       </AppBar>

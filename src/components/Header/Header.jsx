@@ -2,21 +2,16 @@ import React from "react";
 import Toolbar from '@mui/material/Toolbar';
 import AppBar from '@mui/material/AppBar';
 
-export default function Header(props) {
-  const style = {
-    fontSize: 'xxx-large',
-    fontFamily: 'monospace',
-    color: '#fff',
-    height: '60px',
+import './header.scss';
 
-  };
+export default function Header(props) {
+
   return (
     <>
-      <AppBar style={style} position="static">
+      <AppBar style={{ backgroundColor: '#4d4d4d' }} className="header_container" position="static">
         <Toolbar>
-          <h3>Bahaa Store</h3>
+          <h3 data-testid='header'>Bahaa Store</h3>
         </Toolbar>
-
       </AppBar>
     </>
   )
